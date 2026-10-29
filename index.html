@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06131d">
+  <meta name="description" content="Cari, dengarkan, dan unduh audio YouTube dengan xyr-ytdl. Pemutar musik modern dengan tema dark dan tosca.">
+  <meta property="og:title" content="xyr-ytdl — Music Search & Download">
+  <meta property="og:description" content="Cari dan dengarkan lagu favoritmu dengan mudah.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>xyr-ytdl — Music Search & Download</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="/" aria-label="xyr-ytdl Home">
+      <span class="brand-mark"><i class="fa-solid fa-play"></i></span>
+      <span>xyr-<b>ytdl</b></span>
+    </a>
+    <nav class="nav-links" aria-label="Navigasi">
+      <a class="nav-link active" href="#home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a class="nav-link" href="#results"><i class="fa-regular fa-clock"></i><span>Hasil</span></a>
+      <a class="nav-link" href="#about"><i class="fa-regular fa-circle-question"></i><span>Tentang</span></a>
+    </nav>
+    <a class="nav-download" href="#search"><i class="fa-solid fa-magnifying-glass"></i><span>Mulai Cari</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-glow glow-left"></div>
+      <div class="hero-glow glow-right"></div>
+      <div class="hero-content">
+        <div class="eyebrow"><span class="live-dot"></span> MUSIC SEARCH ENGINE</div>
+        <h1>xyr-<span>ytdl</span></h1>
+        <p class="hero-subtitle">Temukan lagu favoritmu, dengarkan langsung, dan simpan audio untuk nanti.</p>
+        <form id="searchForm" class="search-form" autocomplete="off">
+          <i class="fa-solid fa-magnifying-glass search-leading"></i>
+          <input id="searchInput" type="search" name="q" placeholder="Cari judul lagu, artis, atau tempel link YouTube..." aria-label="Cari lagu" required>
+          <button id="searchButton" type="submit"><i class="fa-solid fa-magnifying-glass"></i><span>Search</span></button>
+        </form>
+        <div class="hero-benefits">
+          <span><i class="fa-solid fa-bolt"></i> Cepat dan simpel</span>
+          <span><i class="fa-solid fa-headphones"></i> Preview audio</span>
+          <span><i class="fa-solid fa-mobile-screen"></i> Mobile friendly</span>
+          <span><i class="fa-solid fa-cloud-arrow-down"></i> Unduh audio</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="results-section" id="results">
+      <div class="section-heading">
+        <div>
+          <h2><i class="fa-solid fa-music"></i> Hasil Pencarian</h2>
+          <p id="resultCaption">Cari lagu untuk menampilkan hasil di sini.</p>
+        </div>
+        <span class="result-count" id="resultCount">0 hasil</span>
+      </div>
+      <div id="status" class="status-panel">
+        <div class="status-icon"><i class="fa-solid fa-wave-square"></i></div>
+        <h3>Musik favoritmu, satu pencarian</h3>
+        <p>Ketik judul lagu atau nama artis pada kolom di atas.</p>
+      </div>
+      <div id="resultsGrid" class="results-grid"></div>
+      <div id="loadMoreWrap" class="load-more-wrap hidden">
+        <button id="loadMore" class="outline-button" type="button">Muat hasil lainnya <i class="fa-solid fa-arrow-down"></i></button>
+      </div>
+    </section>
+
+    <section class="about-strip" id="about">
+      <div class="about-icon"><i class="fa-solid fa-wave-square"></i></div>
+      <div>
+        <h3>Simple. Cepat. Fokus ke musik.</h3>
+        <p>xyr-ytdl membantu mencari video musik YouTube, memutar preview audio, dan mengunduh audio yang tersedia.</p>
+      </div>
+      <span class="about-version">XYR / MUSIC</span>
+    </section>
+  </main>
+
+  <section class="player-bar" id="playerBar" aria-label="Pemutar audio" hidden>
+    <div class="player-track">
+      <img id="playerCover" src="https://placehold.co/96x96/0a2633/19e6d2?text=XYR" alt="Cover lagu">
+      <div class="player-track-info">
+        <strong id="playerTitle">Belum ada lagu diputar</strong>
+        <span id="playerArtist">Pilih lagu dari hasil pencarian</span>
+      </div>
+    </div>
+    <div class="player-controls">
+      <button id="playerPlay" class="player-main-button" type="button" aria-label="Putar atau jeda"><i class="fa-solid fa-play"></i></button>
+      <div class="progress-wrap">
+        <span id="currentTime">0:00</span>
+        <input id="progress" type="range" min="0" max="1000" value="0" aria-label="Posisi lagu">
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+    <div class="player-volume">
+      <i class="fa-solid fa-volume-high"></i>
+      <input id="volume" type="range" min="0" max="1" step="0.05" value="0.85" aria-label="Volume">
+    </div>
+    <audio id="audioPlayer" preload="none"></audio>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <a class="brand" href="/"><span class="brand-mark"><i class="fa-solid fa-play"></i></span><span>xyr-<b>ytdl</b></span></a>
+      <p>Temukan musik yang kamu suka, kapan saja.</p>
+    </div>
+    <div class="footer-column"><strong>Navigasi</strong><a href="#home">Home</a><a href="#results">Pencarian</a><a href="#about">Tentang</a></div>
+    <div class="footer-column"><strong>Info</strong><span>Audio player</span><span>Search YouTube</span><span>Download audio</span></div>
+    <div class="footer-social"><strong>XYR MUSIC</strong><span>Dibuat untuk pengalaman musik yang simpel.</span></div>
+    <div class="footer-bottom">© <span id="year"></span> xyr-ytdl. Gunakan konten secara bertanggung jawab.</div>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
